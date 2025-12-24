@@ -1,3 +1,9 @@
 {
-
+"name":{
+	"deadline":"dd-mm-yy",
+	"note":"",
+	"set":"dd-mm-yy", 
+	"difficult":"",
+	"complete":0
+	}
 }

@@ -19,9 +19,12 @@ def create_task(tasks:dict={}): #реализовать множественно
 
     set = (datetime.date.today()).strftime("%d-%m-%y")
     task = input("task name: ")
+    while task[-1] == " ":
+        task = task[0:len(task)-1]
+        
     if tasks.get(task, "") == "":#проверка на существование
-        deadline = input("deadline dd-mm-yy: ")
-        note = (s if (s:=input()) != "" else "")
+        deadline = input("deadline - dd mm yy: ")#автоподстановка
+        note = (s if (s:=input("note: ")) != "" else "")
         print(f"task \'{task}\' created.")
         tasks[task] = {"deadline":deadline, "note":note, "set":set}
     else:
