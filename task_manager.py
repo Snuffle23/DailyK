@@ -1,34 +1,56 @@
 import json
 import datetime
 
-def get_tasks(file):
+def name_normalize(name):
+    while name != "":#Генерация и проверка имени
+        if name.startswith(" ") or name.endswith(" "):
+            while name.endswith(" "):
+                name = name[0:-2]
+            while name.startswith(" "):
+                name = name[1::]
+        break
+    return name
+
+def get_json(file):
     """Возвращает словарь с задачами
     file - путь к файлу с задачами"""
 
-    #Проверить на существование 
-
-    with open(file, "r", encoding="UTF-8") as to_do_list:
-        tasks = json.load(to_do_list)
-    return tasks
+    with open(file, "r", encoding="UTF-8") as file_in:
+        result = json.load(file_in)
+    return result
 
 def create_task(tasks:dict={}): #реализовать множественное создание задач
-    """Добавляет элемент(задачу) формата:
-    "newTask":{"deadline":"dd-mm-yy","note":"description", "set":"dd-mm-yy"} 
-    в указанный словарь
-    task_list - указанный словарь""" 
-
+    """Добавляет задачу в указанный словарь
+    tasks - указанный словарь""" 
+    name = name_normalize(input("Название: "))
+    while not (name not in tasks.keys()) and (name != ""):
+        name = name_normalize(input("Попробуйте другое: "))
+    if not name:
+        return
+    #Генерация контента
     set = (datetime.date.today()).strftime("%d-%m-%y")
-    task = input("task name: ")
-    while task[-1] == " ":
-        task = task[0:len(task)-1]
-        
-    if tasks.get(task, "") == "":#проверка на существование
-        deadline = input("deadline - dd mm yy: ")#автоподстановка
-        note = (s if (s:=input("note: ")) != "" else "")
-        print(f"task \'{task}\' created.")
-        tasks[task] = {"deadline":deadline, "note":note, "set":set}
-    else:
-        print(f"task \'{task}\' already exist.")
+    deadline = input("Дедлайн: ")
+    note = input("Описание: ")
+    difficult = {1:"easy", 2:"midl", 3:"hard", 4:"complex"}[int(input("Сложность 1-4: "))]# Обработка оштбок
+    if difficult == "complex":
+        components = {}
+        while (subtask := input("Подзадача: ")) != "":
+            subtask = name_normalize(subtask)
+            while subtask in components.keys() and (subtask != ""):
+                subtask = name_normalize(input("Попробуйте другое: "))
+            sub_difficult = {1:"easy", 2:"midl", 3:"hard"}[int(input("Сложность 1-3: "))]
+            components[subtask] = {"note": input("Описание: "), "difficult":sub_difficult, "complete":0}
+        tasks[name] = {"deadline": deadline,
+                        "note": note,
+                        "difficult": difficult,
+                        "components":components,
+                        "set": set, "complete": 0}
+        return
+    tasks[name] = {"deadline": deadline,
+                        "note": note,
+                        "difficult": difficult,
+                        "set": set, "complete": 0}
+    return
 
 def upd_json(file, content:dict):
     """Записывает данные content в file(json)

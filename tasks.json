@@ -1,0 +1,13 @@
+{
+"name":{
+	"deadline":"dd-mm-yy",
+	"note":"",
+	"difficult":"complex",
+	"components":{
+		"simpleTask":{"note":"", "difficult":"easy", "complete":1},
+		"otherTask":{"note":"", "difficult":"hard", "complete":0}
+	},
+	"set":"dd-mm-yy", 
+	"complete":0.5
+	}
+}
