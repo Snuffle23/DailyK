@@ -1,0 +1,11 @@
+{
+"year":{
+    "month":{
+        "day":{
+	        "sleepTime":"22:10-07:30", 
+	        "habits":{"hab1":0, "hab2":1}, 
+			"mood":"1"
+		}
+	}
+}
+}
