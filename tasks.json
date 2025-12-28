@@ -1,13 +1,47 @@
 {
-"name":{
-	"deadline":"dd-mm-yy",
-	"note":"",
-	"difficult":"complex",
-	"components":{
-		"simpleTask":{"note":"", "difficult":"easy", "complete":1},
-		"otherTask":{"note":"", "difficult":"hard", "complete":0}
-	},
-	"set":"dd-mm-yy", 
-	"complete":0.5
-	}
+    "hfpj,hfnm xtvjlfy": {
+        "deadline": "",
+        "note": "",
+        "difficult": "easy",
+        "set": "28-12-25",
+        "complete": 1
+    },
+    "Выпить дневную норму вод": {
+        "deadline": "",
+        "note": "",
+        "difficult": "hard",
+        "set": "28-12-25",
+        "complete": 1
+    },
+    "Сдать ЕГЭ на 270+ баллов": {
+        "deadline": "июнь",
+        "note": "",
+        "difficult": "complex",
+        "components": {
+            "План подготовки": {
+                "note": "",
+                "difficult": "hard",
+                "complete": 0
+            },
+            "Придерживаться плана": {
+                "note": "",
+                "difficult": "hard",
+                "complete": 1
+            },
+            "Раборать сложные задания": {
+                "note": "",
+                "difficult": "midl",
+                "complete": 0
+            }
+        },
+        "set": "28-12-25",
+        "complete": 0
+    },
+    "Разобрать задания из проф мата": {
+        "deadline": "05.01.2026",
+        "note": "",
+        "difficult": "hard",
+        "set": "28-12-25",
+        "complete": 0
+    }
 }
