@@ -89,4 +89,11 @@ def create_task(tasks:dict={}): #реализовать множественно
         "set": set, "complete": 0}
     return
 
-
+def bubble_sort(list):
+    for iter in range(len(list)):
+        for index in range(iter):
+            current = list[index]
+            next = list[index + 1]
+            if current > next:
+                list[index], list[index + 1] = next, current
+    return list
