@@ -1,450 +1,412 @@
 {
     "Почистить обувь": {
-        "deadline": "05.01.2026",
+        "deadline": "05.01.2025",
         "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Выбросить мусор": {
-        "deadline": "30.01.2026",
-        "note": "",
+        "deadline": "02.01.2026",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Купить продукты": {
-        "deadline": "15.01.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "deadline": "4.01.2026",
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Позвонить родителям": {
-        "deadline": "20.01.2026",
-        "note": "",
+        "deadline": "06.01.2026",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Оплатить коммунальные услуги": {
         "deadline": "25.01.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Посмотреть фильм": {
         "deadline": "30.01.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Заменить лампочку": {
         "deadline": "30.03.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Взять кредит": {
         "deadline": "05.04.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Обновить программное обеспечение компьютера": {
         "deadline": "10.04.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Зарегистрироваться на курсы английского языка": {
         "deadline": "15.04.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Закончить проект на работе": {
         "deadline": "20.04.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Подготовиться к экзамену": {
         "deadline": "25.04.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Проверить состояние автомобиля": {
         "deadline": "30.04.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Прочитать книгу": {
         "deadline": "05.02.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Записаться к врачу": {
         "deadline": "10.02.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Отремонтировать велосипед": {
         "deadline": "15.02.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Приготовить ужин": {
         "deadline": "20.02.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Навести порядок на рабочем столе": {
         "deadline": "25.02.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Подстричь газон": {
         "deadline": "01.03.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Помыть окна": {
         "deadline": "05.03.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Отправить письмо другу": {
         "deadline": "10.03.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Покрасить забор": {
         "deadline": "15.03.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Проветрить комнату": {
         "deadline": "20.03.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Прогуляться в парке": {
         "deadline": "25.03.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Привезти стройматериалы": {
         "deadline": "05.05.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Повесить картину": {
         "deadline": "10.05.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Установить новые шторы": {
         "deadline": "15.05.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Пополнить баланс телефона": {
         "deadline": "20.05.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Поиграть в настольную игру с друзьями": {
         "deadline": "25.05.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Сделать уборку в квартире": {
         "deadline": "30.05.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Застраховать автомобиль": {
         "deadline": "05.06.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Организовать встречу с коллегами": {
         "deadline": "10.06.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Пройти медицинский осмотр": {
         "deadline": "15.06.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Отметить праздник с семьей": {
         "deadline": "20.06.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Переставить мебель в комнате": {
         "deadline": "25.06.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Освежить краску на двери": {
         "deadline": "30.06.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Сходить в спортзал": {
         "deadline": "05.07.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Получить водительские права": {
         "deadline": "10.07.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Изучить новую технологию программирования": {
         "deadline": "15.07.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Открыть банковский счёт": {
         "deadline": "20.07.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Создать резервную копию файлов": {
         "deadline": "25.07.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Написать статью": {
         "deadline": "30.07.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Погладить одежду": {
         "deadline": "05.08.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Собрать урожай": {
         "deadline": "10.08.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Заварить чай": {
         "deadline": "15.08.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "0"
     },
     "Переустановить операционную систему": {
         "deadline": "20.08.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Почитать детям сказку перед сном": {
         "deadline": "25.08.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Посадить цветы": {
         "deadline": "30.08.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Сменить постельное бельё": {
         "deadline": "05.09.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Научиться готовить новое блюдо": {
         "deadline": "10.09.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Снять квартиру": {
         "deadline": "15.09.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Заменить фильтр кондиционера": {
         "deadline": "20.09.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Оформить подписку на журнал": {
         "deadline": "25.09.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Ремонтировать розетку": {
         "deadline": "30.09.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Заправить картридж принтера": {
         "deadline": "05.10.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Послушать любимую музыку": {
         "deadline": "10.10.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Нарезать овощи для салата": {
         "deadline": "15.10.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Рассказать анекдот друзьям": {
         "deadline": "20.10.2026",
-        "note": "",
         "difficult": "easy",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Починить сломанный стул": {
         "deadline": "25.10.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Наладить отношения с соседями": {
         "deadline": "25.10.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Запланировать отпуск": {
         "deadline": "05.11.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Сдать отчет начальнику": {
         "deadline": "10.11.2026",
-        "note": "",
         "difficult": "hard",
-        "set": "28-12-25",
-        "complete": 1
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Почистить компьютер от вирусов": {
         "deadline": "15.11.2026",
-        "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "midl",
+        "set": "28.12.25",
+        "complete": "1"
     },
     "Настроить роутер": {
         "deadline": "20.11.2026",
+        "difficult": "hard",
+        "set": "28.12.25",
+        "complete": "1"
+    },
+    "Помечтать перед сном": {
+        "deadline": "10.09.2026",
         "note": "",
-        "difficult": "medium",
-        "set": "28-12-25",
-        "complete": 1
+        "difficult": "comp",
+        "components": {
+            "Подумать о деньгах": {
+                "note": "",
+                "difficult": "easy",
+                "complete": 1
+            },
+            "Подумать о спорте": {
+                "note": "Расписание, хз",
+                "difficult": "hard",
+                "complete": 0
+            },
+            "Подумать об отношениях": {
+                "note": "",
+                "difficult": "hard",
+                "complete": 0
+            }
+        },
+        "set": "06.01.26",
+        "progress": 0.33,
+        "complete": 0
     }
 }

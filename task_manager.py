@@ -3,8 +3,10 @@ import datetime
 
 
 def get_json(file):
-    """Возвращает словарь с задачами
-    file - путь к файлу с задачами"""
+    """Возвращает словарь
+
+    :param file: путь к файлу
+    """
 
     with open(file, "r", encoding="UTF-8") as file_in:
         result = json.load(file_in)
@@ -12,14 +14,18 @@ def get_json(file):
 
 def upd_json(file, content:dict):
     """Записывает данные content в file(json)
-    file - путь до файла
-    content - запысываемые данные"""
+
+    :param file: путь до файла
+    :param content: запысываемый словарь"""
     with open(file, 'w', encoding="UTF-8") as file_out:
         json.dump(content, file_out, ensure_ascii=False, indent=4)
 
 
 def name_normalize(name:str=""):
-    """Возвращает нормализированную строку (без пробелов в начале и в конце)"""
+    """Возвращает нормализированную строку (без пробелов в начале и в конце)
+    
+    :param name: Строка 
+    """
     while name != "":#Генерация и проверка имени
         if name.startswith(" ") or name.endswith(" "):
             while name.endswith(" "):
@@ -29,44 +35,58 @@ def name_normalize(name:str=""):
         break
     return name
 
-def flag_filter(tasks:dict, complete=0):
-    """Возвращает список кортежей формата (Имя, флаг выполнения, '{компоненты}если есть')
-    tasks - словарь с задачами
-    complete - флаг возвращаемых задач"""
-    result = []
-    for task in tasks: # имя задачи
-        intermediate = dict()
-        if tasks[task].get("components", False):
-            counter = 0
-            for subtask in tasks[task]["components"]:
-                subflag = tasks[task]["components"][subtask]["complete"]
-                if complete == 0 and subflag < 1:
-                    intermediate[subtask] = subflag
-                elif complete == 1 and subflag == 1:
-                    intermediate[subtask] = subflag
-                counter += subflag
+def overdue_checkup(tasks:dict, overdue=False, arg="deadline"):
+    """
+    Возвращает словарь {task:date}
 
-        flag = tasks[task]["complete"] # флаг выполнения
-        if complete == 0 and flag < 1:
-            result.append((task, float(f'{counter / len(tasks[task]["components"].keys()):.2f}'), {"components":intermediate}) if intermediate else (task, flag))
-        elif complete == 1 and flag == 1:
-            result.append((task))
-    return result
+    :param tasks: Список проверяемых задач
+    :param overdue: срок годности. True - просроченные, False - непросроченные
+    """
+    today = datetime.date.today().strftime(f"%d.%m.20%y").split(".")[::-1]
+    checked = {}
+    for task in tasks:
+        if arg:
+            date = tasks[task][arg]
+        else:
+            date = tasks[task]
+        overdue_mark = False
+        for i, d in enumerate(date.split(".")[::-1]):#индекс и элемент даты
+            if int(d) < int(today[i]) and int(date.split(".")[1]) <= int(today[1]):
+                overdue_mark = True
+        if overdue_mark == overdue:
+            checked[task] = date
+    return checked
+
+def arg_checkup(tasks:dict, arg:str, value=""):
+    """
+    Возвращает список имен, содержащих значение агрумента
+    
+    :param tasks: Итерируемый словарь
+    :param arg: Ключ, по которому проверяется значение в итерируемом словаре
+    :param value: проверяемое значение
+    """
+    
+    final_list = []
+    for task_name in tasks:
+        task_dict = tasks[task_name]
+        if task_dict.get(arg, "Not found") != "Not found":
+            if value and str(task_dict[arg]) == value:
+                final_list.append(task_name)
+    return final_list
 
 def create_task(tasks:dict={}): #реализовать множественное создание задач
-    """Добавляет задачу в указанный словарь
-    tasks - указанный словарь""" 
+    """Добавляет задачу в указанный словарь""" 
     name = name_normalize(input("Название: "))
     while not (name not in tasks.keys()) and (name != ""):
         name = name_normalize(input("Попробуйте другое: "))
     if not name:
         return
     #Генерация контента
-    set = (datetime.date.today()).strftime("%d-%m-%y")
+    set = (datetime.date.today()).strftime("%d.%m.%y")
     deadline = input("Дедлайн: ")
     note = input("Описание: ")
-    difficult = {1:"easy", 2:"midl", 3:"hard", 4:"complex"}[int(num)] if ((num:=input("Сложность 1-4: ")) < "5") and num.isdigit() else 1
-    if difficult == "complex":
+    difficult = {1:"easy", 2:"midl", 3:"hard", 4:"comp"}[int(num)] if ((num:=input("Сложность 1-4: ")) < "5") and num.isdigit() else 1
+    if difficult == "comp":
         components = {}
         while (subtask := input("Подзадача: ")) != "":
             subtask = name_normalize(subtask)
@@ -90,6 +110,7 @@ def create_task(tasks:dict={}): #реализовать множественно
     return
 
 def bubble_sort(list):
+    """Возвращает список, отсортированый методом пузырька"""
     for iter in range(len(list)):
         for index in range(iter):
             current = list[index]
