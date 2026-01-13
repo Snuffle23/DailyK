@@ -408,5 +408,13 @@
         "set": "06.01.26",
         "progress": 0.33,
         "complete": 0
+    },
+    "{eq": {
+        "difficult": "easy",
+        "deadline": "",
+        "estime": 30,
+        "note": false,
+        "set": "14.01.2026",
+        "complete": 0
     }
 }
