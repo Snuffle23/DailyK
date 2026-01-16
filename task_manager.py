@@ -69,14 +69,16 @@ def tasking(estime:int=1, deadline:str=False, note:str=False, difficult:str=Fals
     easy = 30 # 30 минут
     midl = 60 # час
     hard = 240 # 4 часа
-    if estime <= easy: 
-        diff = "easy"
-    elif estime <= midl:
-        diff = "midl"
-    elif estime <= hard:
-        diff = "hard"
-    elif estime > hard or difficult == "complex":
-        diff = "complex"
+    if not difficult:
+        if estime <= easy: 
+            diff = "easy"
+        elif estime <= midl:
+            diff = "midl"
+        elif estime <= hard:
+            diff = "hard"
+        elif estime > hard:
+            diff = "complex"
+    if difficult == "complex":
         if not components:
             print(f"У комплексной задачи должны быть подзадачи")
             sub_tasking()
@@ -88,45 +90,106 @@ def tasking(estime:int=1, deadline:str=False, note:str=False, difficult:str=Fals
     else:
         return {"difficult":diff, "estime":estime, "note":note, "complete":0.0}
 
-def overdue_checkup(tasks:dict=get_json("tasks"), overdue=False, arg="deadline"):
+def task_filter(arg:str="complete", rule="==", filtermark=False,  prim_dict:dict=get_json("tasks")):
     """
-    Возвращает словарь {task:date}
-
-    :param tasks: Список проверяемых задач
-    :param overdue: срок годности. True - просроченные, False - непросроченные
+    Возврачает список ключей, подходящих по условию
+    
+    :param arg: Параметр задачи
+    :type arg: str
+    :param rule: Логических знак > < ==
+    :type rule: str
+    :param filtermark: Значение для сравнения
+    :param prim_dict: Словарь задач
+    :type prim_dict: dict
     """
-    today = datetime.date.today().strftime(f"%d.%m.20%y").split(".")[::-1]
-    checked = {}
-    for task in tasks:
-        if arg:
-            date = tasks[task][arg]
+    if rule not in ["<", ">", "==", "!=", ">=", "<="]:
+        return
+    list = []
+    checked = []
+    
+    for key in prim_dict:
+        if not(arg == "components"):
+            list.append({key:prim_dict[key][arg]})
         else:
-            date = tasks[task]
-        overdue_mark = False
-        for i, d in enumerate(date.split(".")[::-1]):#индекс и элемент даты
-            if int(d) < int(today[i]) and int(date.split(".")[1]) <= int(today[1]):
-                overdue_mark = True
-        if overdue_mark == overdue:
-            checked[task] = date
-    return checked
+            if "components" in prim_dict[key]:
+                list.append({key:len(prim_dict[key][arg].keys())})
 
-def arg_checkup(tasks:dict, arg:str, value=""):
-    """
-    Возвращает список имен, содержащих значение агрумента
-    
-    :param tasks: Итерируемый словарь
-    :param arg: Ключ, по которому проверяется значение в итерируемом словаре
-    :param value: проверяемое значение
-    """
-    
-    final_list = []
-    for task_name in tasks:
-        task_dict = tasks[task_name]
-        if task_dict.get(arg, "Not found") != "Not found":
-            if value and str(task_dict[arg]) == value:
-                final_list.append(task_name)
-    return final_list
+    if arg == "difficult":
+        difficults = ["easy", "midl", "hard", "complex"]
+        limit = -1
+        for i, elem in enumerate(difficults):
+            if elem == filtermark:
+                limit = i
+                break
+        if not (limit < 0):
+            if rule == "<":
+                difficults = difficults[0:limit]
+            elif rule == ">":
+                difficults = difficults[limit+1::]
+            else: #rule == "=="
+                difficults = difficults[limit] 
+    elif arg == "deadline":
+        filtermark = str(datetime.date.today()).split("-") if not filtermark else filtermark.split(".") #today if not filtermark
+        filtermark = [int(dd) for dd in filtermark[::-1]]
 
+    for dict in list:
+        correct = False
+        for key in dict:
+            val = str(dict[key])
+            if arg in ["estime", "components"]:
+                correct = True if eval(f"{val} {rule} {str(filtermark)}") else False
+
+            elif arg == "difficult":
+                if dict[key] in difficults:
+                    correct = True
+                    
+            elif arg == "complete":
+                """
+                <1 не выполненные
+                >0 начатые
+                ==0 не начатые
+                ==1 выполненные
+                >0.33 Выполненные больше чем на 0.33
+                <0.66 Выполненные меньше чем на 0.66
+                ==0.5 Выполненные строго на половину
+                """
+                ex = f"{float(val)} {rule} {float(filtermark)}"
+                expression = eval(ex) if not (float(val) == 1.0 and rule == ">") else False
+                correct = True if expression else False
+
+            elif arg == "deadline":
+                """
+                < Просроченные
+                == Четкое совпадение
+                >= Не просроченные
+                """
+                value = [int(num) for num in val.split(".")[::-1]] #Что сравнивается
+                date = filtermark[::-1] #С чем сравнивается
+                rating = [0, 0, 0]
+                for i in range(3):
+                    rating[i] = value[i] - date[i]
+                date_check = False
+                if rating[0] < 0:
+                    date_check = True
+                elif rating[0] <= 0 and rating[1] < 0:
+                    date_check = True
+                elif rating[0] <= 0 and rating[1] <= 0 and rating[2] < 0:
+                    date_check = True
+
+                if rule == "==":
+                    for i in rating:
+                        date_check = True if i == 0 else False
+                elif rule == ">=":
+                    date_check = True if date_check == False else False
+                correct = date_check
+                        
+        if correct:
+            checked.append({key:val})
+    result = [0]*len(checked)
+    for index, dict in enumerate(checked):
+        for key in dict:
+            result[index] = key      
+    return result
 
 def bubble_sort(list):
     """Возвращает список, отсортированый методом пузырька"""
