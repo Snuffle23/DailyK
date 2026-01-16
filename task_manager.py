@@ -65,7 +65,6 @@ def tasking(estime:int=1, deadline:str=False, note:str=False, difficult:str=Fals
             sub_tasking()
 
     set = (datetime.date.today()).strftime("%d.%m.20%y")
-    components = {} if not components else components
 
     easy = 30 # 30 минут
     midl = 60 # час
@@ -78,17 +77,18 @@ def tasking(estime:int=1, deadline:str=False, note:str=False, difficult:str=Fals
         diff = "hard"
     elif estime > hard or difficult == "complex":
         diff = "complex"
-        print(f"У комплексной задачи должны быть подзадачи")
-        sub_tasking()
+        if not components:
+            print(f"У комплексной задачи должны быть подзадачи")
+            sub_tasking()
     
     if main and components:
-        return {"difficult":diff, "deadline":deadline, "estime":estime, "note":note, "components":components, "set":set, "progress":0.0, "complete":0}
+        return {"difficult":diff, "deadline":deadline, "estime":estime, "note":note, "components":components, "set":set, "complete":0.0}
     elif main:
-        return {"difficult":diff, "deadline":deadline, "estime":estime, "note":note, "set":set, "complete":0}
+        return {"difficult":diff, "deadline":deadline, "estime":estime, "note":note, "set":set, "complete":0.0}
     else:
-        return {"difficult":diff, "estime":estime, "note":note, "complete":0}
+        return {"difficult":diff, "estime":estime, "note":note, "complete":0.0}
 
-def overdue_checkup(tasks:dict, overdue=False, arg="deadline"):
+def overdue_checkup(tasks:dict=get_json("tasks"), overdue=False, arg="deadline"):
     """
     Возвращает словарь {task:date}
 
