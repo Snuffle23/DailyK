@@ -69,7 +69,8 @@ def tasking(estime:int=1, deadline:str=False, note:str=False, difficult:str=Fals
     easy = 30 # 30 минут
     midl = 60 # час
     hard = 240 # 4 часа
-    if not difficult:
+    diff = difficult
+    if not diff:
         if estime <= easy: 
             diff = "easy"
         elif estime <= midl:
@@ -78,8 +79,9 @@ def tasking(estime:int=1, deadline:str=False, note:str=False, difficult:str=Fals
             diff = "hard"
         elif estime > hard:
             diff = "complex"
-    if difficult == "complex":
+    if diff == "complex":
         if not components:
+            components = {}
             print(f"У комплексной задачи должны быть подзадачи")
             sub_tasking()
     
@@ -90,7 +92,7 @@ def tasking(estime:int=1, deadline:str=False, note:str=False, difficult:str=Fals
     else:
         return {"difficult":diff, "estime":estime, "note":note, "complete":0.0}
 
-def task_filter(arg:str="complete", rule="==", filtermark=False,  prim_dict:dict=get_json("tasks")):
+def task_filter(arg:str="complete", rule="<", filtermark=1,  prim_dict:dict=get_json("tasks")):
     """
     Возврачает список ключей, подходящих по условию
     
@@ -169,19 +171,14 @@ def task_filter(arg:str="complete", rule="==", filtermark=False,  prim_dict:dict
                 for i in range(3):
                     rating[i] = value[i] - date[i]
                 date_check = False
-                if rating[0] < 0:
+                if eval(f"{rating[0]} {rule} 0"):
                     date_check = True
-                elif rating[0] <= 0 and rating[1] < 0:
+                elif eval(f"{rating[0]} {rule[0]}= 0") and eval(f"{rating[1]} {rule} 0"):
                     date_check = True
-                elif rating[0] <= 0 and rating[1] <= 0 and rating[2] < 0:
-                    date_check = True
-
-                if rule == "==":
-                    for i in rating:
-                        date_check = True if i == 0 else False
-                elif rule == ">=":
-                    date_check = True if date_check == False else False
+                elif eval(f"{rating[0]} {rule[0]}= 0") and eval(f"{rating[1]} {rule[0]}= 0") and eval(f"{rating[2]} {rule} 0"):
+                    date_check = True    
                 correct = date_check
+                
                         
         if correct:
             checked.append({key:val})
