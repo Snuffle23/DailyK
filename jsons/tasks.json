@@ -1,0 +1,50 @@
+{
+    "Задания, которые умею решать ЕГЭ инфа": {
+        "difficult": "hard",
+        "deadline": "25.02.2026",
+        "estime": 120,
+        "note": false,
+        "set": "24.02.2026",
+        "complete": 0.0
+    },
+    "Новые задания Егэ инфа": {
+        "difficult": "hard",
+        "deadline": "08.03.2026",
+        "estime": 240,
+        "note": false,
+        "set": "24.02.2026",
+        "complete": 0.0
+    },
+    "Добить 60 баллов Егэ русский": {
+        "difficult": "hard",
+        "deadline": "01.03.2026",
+        "estime": 240,
+        "note": false,
+        "set": "24.02.2026",
+        "complete": 0.0
+    },
+    "Записаться в автошколу": {
+        "difficult": "easy",
+        "deadline": "25.02.2026",
+        "estime": 15,
+        "note": false,
+        "set": "24.02.2026",
+        "complete": 0.0
+    },
+    "Записаться к Лариной": {
+        "difficult": "easy",
+        "deadline": "25.02.2026",
+        "estime": 15,
+        "note": false,
+        "set": "24.02.2026",
+        "complete": 0.0
+    },
+    "Разработать механику трекера для daylik": {
+        "difficult": "hard",
+        "deadline": "01.03.2026",
+        "estime": 240,
+        "note": false,
+        "set": "24.02.2026",
+        "complete": 0.0
+    }
+}

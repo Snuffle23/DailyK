@@ -7,6 +7,7 @@ def get_json(file):
 
     :param file: путь к файлу(можно не указывать формат файла, потому что функция только для json)
     """
+    file = "jsons/"+file
     file = file + ".json" if not file.endswith(".json") else file
     with open(file, "r", encoding="UTF-8") as file_in:
         result = json.load(file_in)
@@ -17,7 +18,7 @@ def upd_json(file, content:dict):
 
     :param file: путь до файла(можно не указывать формат файла, потому что функция только для json)
     :param content: запысываемый словарь"""
-
+    file = "jsons/"+file
     file = file + ".json" if not file.endswith(".json") else file
     with open(file, 'w', encoding="UTF-8") as file_out:
         json.dump(content, file_out, ensure_ascii=False, indent=4)
