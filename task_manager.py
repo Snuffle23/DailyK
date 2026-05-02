@@ -1,41 +1,5 @@
-import json
 import datetime
 
-
-def get_json(file):
-    """Возвращает словарь
-
-    :param file: путь к файлу(можно не указывать формат файла, потому что функция только для json)
-    """
-    file = "jsons/"+file
-    file = file + ".json" if not file.endswith(".json") else file
-    with open(file, "r", encoding="UTF-8") as file_in:
-        result = json.load(file_in)
-    return result
-
-def upd_json(file, content:dict):
-    """Записывает данные content в file(json)
-
-    :param file: путь до файла(можно не указывать формат файла, потому что функция только для json)
-    :param content: запысываемый словарь"""
-    file = "jsons/"+file
-    file = file + ".json" if not file.endswith(".json") else file
-    with open(file, 'w', encoding="UTF-8") as file_out:
-        json.dump(content, file_out, ensure_ascii=False, indent=4)
-
-def name_normalize(name:str="", dict={}):
-        """Возвращает нормализированную строку (без пробелов в начале и в конце), добавляет _num, чтобы получить строку, подходящую как ключ для словаря dict"""
-        
-        while name.endswith(" "):#срез строки без последнего символа, пока кончается на пробел
-            name = name[0:-1]
-        while name.startswith(" "):#срез строки без первого символа, пока начинается на пробел
-            name = name[1::]
-
-        while name in dict.keys():
-            elems = name.split("_")
-            digit_end = f"_{int(elems[-1]) + 1}" if (elems[-1].isdigit()) else "_1"
-            name = ("_".join(elems[:-1:] if len(elems) > 1 else elems) )+ digit_end
-        return name
 
 
 def tasking(estime:int=1, deadline:str=False, note:str=False, difficult:str=False, components = False, main:bool=True):
