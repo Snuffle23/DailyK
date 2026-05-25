@@ -29,62 +29,99 @@ def today():
     now = datetime.now()
     return str(now.year), str(now.month), str(now.day)
 
-def tasking(year=None,month=None, day=None, content=None):
+def tasking(year=None,month=None, day=None, content:dict=None):
     if year is None: year=today()[0]
+    else: year = str(year)
     if month is None: month=today()[1]
+    else: month = str(month)
     if day is None: day=today()[2]
-    if not(content is None):
-        date.attach(2026, 5, 2, tasks.new(content), 0)
+    else: day = str(day)
+    if content is not None:
+        content["set"] = today()
+        content["deadline"] = (year,month,day)
+        content["complete"] = 0
+        if _calen.attach(year,month,day, _tasks.new(content=content), 0):
+            print("- New task created. -\n")
+        else:
+            print("A DateErrore has occerred! The task wasn't created. ")
+    else:
+        print("Content atr should not be empty!")
+
+
+def remove_task():
+    #year=None,month=None, day=None, content=None
+    #if year is None: year=today()[0]
+    #if month is None: month=today()[1]
+    #if day is None: day=today()[2]
+    pass
+    
 
 class DayEntry:
-    created_at = datetime.now()
     groups = ["tasks"]
     def __init__(self):
-        print(f"---celendar initiated:'{self.created_at}'---\n")
+        print(f"---celendar initiated:'{datetime.now()}'---")
         self.cal = get_json("jsons/calendar.json")
         self.date_init()
  
-    def date_init(self, year=created_at.year, month=created_at.month, day=""):
-        year, month, day = map(str, [year,month, day])
+    def date_init(self, year=None, month=None, day=None):
+        if year is None: year=today()[0]
+        else: year = str(year)
+        if month is None: month=today()[1]
+        else: month = str(month)
+        if day is not None:day = str(day)
+
         dictionary = self.cal
         rule = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
 
         if year not in dictionary.keys():
             dictionary[year] = {}
-            print(f"Created new section - '{year}'" + ":{}")
+            print(f"Creating year section - '{year}'" + ":{}...")
 
         if month not in dictionary[year].keys():
-            dictionary[year][month] = {}
-            print(f"Created new section - '{year}.{month}'" + ":{}")
+            if int(month) < 13:
+                dictionary[year][month] = {}
+                print(f"Creating month section - '{year}.{month}'" + ":{}...")
+            else:
+                print("The month must be greater than 13")
+                return False
+        if day is not None:
+            if day not in list(dictionary[year][month].keys()):
+                if int(day) < max(calendar.monthcalendar(int(year),int(month))[-1]):
+                    dictionary[year][month][day] = (rule[calendar.weekday(int(year), int(month), int(day))], {})
+                    print(f"Creating day section - '{year}.{month}.{day}'" + ":{}...")
+                else:
+                    print("Day must be exist!")
+                    return False
+            else:
+                print("Day already was created.")
+                return None
 
-        if day and (day not in dictionary[year][month].keys()):
-            dictionary[year][month][day] = (rule[calendar.weekday(int(year), int(month), int(day))], {})
-            print(f"Created new section - '{year}.{month}.{day}'" + ":{}")
-        
-        if not day:
-            
-            weeks = calendar.monthcalendar(int(year),int(month))
-            for week in weeks:
-                for i, day in enumerate(week):
-                    if day != 0:
-                        if str(day) not in dictionary[year][month].keys():
-                            dictionary[year][month][str(day)] = [rule[i], {}]
-        
+        if day is None:
+            if len(list(dictionary[year][month].keys())) < max(calendar.monthcalendar(int(year),int(month))[-1]):
+                weeks = calendar.monthcalendar(int(year),int(month))
+                for week in weeks:
+                    for indx, day_of_week in enumerate(week):
+                        if day_of_week != 0:
+                            if str(day_of_week) not in dictionary[year][month].keys():
+                                dictionary[year][month][str(day_of_week)] = [rule[indx], {}]
+                print(f"Creating days 1 - {max(weeks[-1])} in {year}.{month}...")
+            else:
+                print("All available days already was created.\n")
+                return False
+        print("- successful initialization -\n")
         load_json("jsons/calendar.json", dictionary)
         self.cal = get_json("jsons/calendar.json")
 
 
-    def get(self, year=created_at.year, month=created_at.month, day=created_at.day):
-        year, month, day = map(str, [year, month, day])
-        try:
-            return self.cal[year][month][day]
-        except KeyError:
-            print("Date not found for giving")
+    def get():
+        pass
 
 
-    def attach(self,year, month, day, content:str, group_number:int):
+    def attach(self,year, month, day, task_id:str, group_number:int):
         year, month, day = map(str, [year,month, day])
-        self.date_init(year, month, day)
+        if self.date_init(year, month, day) is not None:
+            _tasks.remove(task_id)
+            return
         date = self.cal[year][month][day][1]
         group = self.groups[group_number]
 
@@ -92,11 +129,11 @@ class DayEntry:
             date[group] = []
             print("group created")
 
-        if content not in date[group]:
-            date[group].append(content)
-            print("the content was added to date")
+        if task_id not in date[group]:
+            date[group].append(task_id)
+            print("the task_id was added to date")
         else:
-            print("the content is already attached")
+            print("the task_id is already attached")
 
         self.cal[year][month][day][1] = date
         load_json("jsons/calendar.json", self.cal)
@@ -140,7 +177,7 @@ class Tasks:
         else:
             print(f"Task with ID:'{id}' not exist")
 
-    def get_by_attr(self, attr, val):
+    def get_by_attr(self, attr):
         pass
 
     def new(self,content):
@@ -154,7 +191,7 @@ class Tasks:
         return id
     
     def remove(self,id):
-        print(f"{self.all.pop(str(id),"Task don't was")} deleted")
+        print(f"{self.all.pop(str(id),'Task don\'t was')} deleted")
         load_json("jsons/tasks.json", self.all)
         self.self_upd()
 
@@ -167,18 +204,7 @@ class Tasks:
         while name.startswith(" "):#срез строки без первого символа, пока начинается на пробел
             name = name[1::]
         return name
+    
 
-tasks = Tasks()
-date = DayEntry()
-content = {
-        "name":"XXX",
-        "difficult":"",
-        "deadline":"",
-        "note":"",
-        "set":"",
-        "complete":""
-        }
-
-tasking(content=content)
-
-
+_calen = DayEntry()
+_tasks = Tasks()
